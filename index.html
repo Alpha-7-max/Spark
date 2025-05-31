@@ -12,24 +12,24 @@
 
     <style>
         :root {
-            --app-disabled-bg-gray: #e5e7eb; 
-            --app-disabled-text-gray: #9ca3af; 
-            --app-border-gray: #d1d5db; 
-            --copy-button-border-copied: #a78bfa; 
+            --app-disabled-bg-gray: #e5e7eb;
+            --app-disabled-text-gray: #9ca3af;
+            --app-border-gray: #d1d5db;
+            --copy-button-border-copied: #a78bfa;
             --pure-white: #ffffff;
-            --placeholder-text-color: #9ca3af; 
-            --slate-50: #f8fafc;  
-            --heading-text-color: #1e293b; 
+            --placeholder-text-color: #9ca3af;
+            --slate-50: #f8fafc;
+            --heading-text-color: #1e293b;
 
-            --spark-title-indigo: #4f46e5; 
-            --spark-icon-hover-color: #ffc107; 
+            --spark-title-indigo: #4f46e5;
+            --spark-icon-hover-color: #ffc107;
 
-            --app-purple-base: var(--spark-title-indigo); 
-            --app-purple-hover: #4338ca;  
-            --app-purple-active: #3730a3; 
-            --app-purple-focus-ring: #818cf8; 
-            --app-purple-super-light-bg: #eef2ff; 
-            --app-purple-text-light: #6d28d9; 
+            --app-purple-base: var(--spark-title-indigo);
+            --app-purple-hover: #4338ca;
+            --app-purple-active: #3730a3;
+            --app-purple-focus-ring: #818cf8;
+            --app-purple-super-light-bg: #eef2ff;
+            --app-purple-text-light: #6d28d9;
             --app-purple-base-rgb: 79, 70, 229;
 
             --app-slate-100: #f1f5f9;
@@ -39,31 +39,32 @@
             --app-blue-500-shadow: rgba(59, 130, 246, 0.3);
             --app-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
-            --selection-bg-purple: #d1c4e9;  
-            --selection-text-purple: #311b92; 
+            --selection-bg-purple: #d1c4e9;
+            --selection-text-purple: #311b92;
 
             --color-skeleton-base: #e5e7eb;
             --color-skeleton-highlight: #f3f4f6;
         }
 
         body {
-            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif; 
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
             background-image: linear-gradient(to bottom right, #e0f2fe, #bfdbfe, #a5b4fc);
         }
 
-        .page-container { 
+        .page-container {
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 0;    
-            padding-right: 0;   
-            padding-top: 0.5rem; 
+            padding-left: 0.75rem;  /* MODIFIED: Added side padding for mobile */
+            padding-right: 0.75rem; /* MODIFIED: Added side padding for mobile */
+            padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             width: 100%;
+            box-sizing: border-box; /* Ensures padding is included correctly with width: 100% */
         }
         @media (min-width: 640px) {
             .page-container {
-                padding: 2rem; 
+                padding: 2rem;
                 max-width: 1280px;
             }
         }
@@ -72,82 +73,82 @@
             background-color: var(--app-blue-600);
             color: var(--pure-white);
         }
-        ::-moz-selection { 
+        ::-moz-selection {
             background-color: var(--app-blue-600);
             color: var(--pure-white);
         }
 
-        .translator-card { 
+        .translator-card {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(1rem);
-            border-radius: 12px; /* Slightly less rounded for mobile */
+            border-radius: 0px; /* MODIFIED: Sharp corners for mobile */
             border: none;
             width: 100%;
         }
         @media (min-width: 640px) {
             .translator-card {
                 border-radius: 8px; /* Less rounded for PC */
-                border: 1px solid var(--app-border-gray); 
+                border: 1px solid var(--app-border-gray);
             }
         }
 
-        .text-io-box { 
+        .text-io-box {
             border: 1px solid var(--app-border-gray);
             border-radius: 6px;
-            min-height: 140px; 
-            padding: 1rem;    
-            color: #1f2937; 
+            min-height: 140px;
+            padding: 1rem;
+            color: #1f2937;
         }
         @media (min-width: 640px) {
             .text-io-box {
-                min-height: 180px; 
+                min-height: 180px;
             }
         }
 
 
         .input-textarea {
-            background-color: var(--pure-white); 
-            font-size: 0.9375rem; 
-            line-height: 1.65;    
-            resize: none; 
+            background-color: var(--pure-white);
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            resize: none;
         }
         .input-textarea:focus {
-            border-color: var(--app-blue-600); 
-            box-shadow: 0 0 0 1px var(--app-blue-500-shadow); 
+            border-color: var(--app-blue-600);
+            box-shadow: 0 0 0 1px var(--app-blue-500-shadow);
             outline: none;
         }
         .input-textarea::placeholder {
             color: #6b7280;
-            font-size: 0.9375rem; 
+            font-size: 0.9375rem;
         }
-        
+
         .output-box {
-            background-color: var(--slate-50); 
-            font-size: 0.9375rem; 
+            background-color: var(--slate-50);
+            font-size: 0.9375rem;
             line-height: 1.65;
-            resize: none; 
+            resize: none;
             color: #374151; /* Medium-Dark Gray */
         }
-        .output-box.is-placeholder-text { 
-            color: #6b7280; /* Medium Gray */ 
+        .output-box.is-placeholder-text {
+            color: #6b7280; /* Medium Gray */
         }
-        .output-box.is-processing { 
-            background-color: var(--app-purple-super-light-bg); 
+        .output-box.is-processing {
+            background-color: var(--app-purple-super-light-bg);
             opacity: 0.8;
             color: var(--app-purple-base);
         }
-        
+
         .skeleton-wrapper {
             width: 100%;
             height: 100%;
-            min-height: 100px; 
+            min-height: 100px;
         }
         @media (min-width: 640px) {
             .skeleton-wrapper {
                 min-height: 120px;
             }
         }
-        
+
         .skeleton-line {
             height: 12px;
             margin-bottom: 8px;
@@ -156,20 +157,20 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .skeleton-line:last-child {
             margin-bottom: 0;
             width: 80%;
         }
-        
+
         .skeleton-line:nth-child(2) {
             width: 94%;
         }
-        
+
         .skeleton-line:nth-child(3) {
             width: 88%;
         }
-        
+
         .skeleton-line::after {
             content: "";
             position: absolute;
@@ -177,14 +178,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                        var(--color-skeleton-base), 
-                        var(--color-skeleton-highlight), 
+            background: linear-gradient(90deg,
+                        var(--color-skeleton-base),
+                        var(--color-skeleton-highlight),
                         var(--color-skeleton-base));
             animation: shimmer 1.5s infinite;
             transform: translateX(-100%);
         }
-        
+
         @keyframes shimmer {
             100% {
                 transform: translateX(100%);
@@ -199,16 +200,16 @@
             align-items: center;
             justify-content: center;
             padding: 0.375rem 0.75rem; /* Smaller padding for mobile */
-            border: 1px solid var(--app-border-gray); 
-            border-radius: 10px; 
+            border: 1px solid var(--app-border-gray);
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.8125rem; /* Smaller font for mobile */
-            font-weight: 600; 
-            color: var(--app-slate-700); 
-            background-color: var(--app-slate-100); 
+            font-weight: 600;
+            color: var(--app-slate-700);
+            background-color: var(--app-slate-100);
             line-height: 1.5;
-            box-shadow: var(--app-shadow-sm); 
+            box-shadow: var(--app-shadow-sm);
         }
          @media (min-width: 640px) {
             .lang-option label {
@@ -216,22 +217,22 @@
                 font-size: 0.875rem; /* Original font size for PC */
             }
         }
-        .lang-option label:hover { 
-            background-color: var(--app-slate-200); 
+        .lang-option label:hover {
+            background-color: var(--app-slate-200);
         }
         .lang-option input[type="radio"]:checked + label {
-            background-color: var(--app-blue-600); 
-            border-color: var(--app-blue-600);     
-            color: var(--pure-white); 
-            box-shadow: var(--app-blue-500-shadow), var(--app-shadow-sm); 
+            background-color: var(--app-blue-600);
+            border-color: var(--app-blue-600);
+            color: var(--pure-white);
+            box-shadow: var(--app-blue-500-shadow), var(--app-shadow-sm);
         }
         .lang-option input[type="radio"]:focus-visible + label {
-            outline: 2px solid var(--app-purple-focus-ring); 
+            outline: 2px solid var(--app-purple-focus-ring);
             outline-offset: 2px;
         }
 
         .translate-action-button {
-            background-image: linear-gradient(to right, #2563eb, #1d4ed8); 
+            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             color: #ffffff;
             font-weight: 500;
@@ -252,18 +253,18 @@
             box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #60a5fa;
         }
         .translate-action-button:disabled {
-            background-image: linear-gradient(to right, #2563eb, #1d4ed8); 
+            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
             color: white;
             cursor: not-allowed;
             opacity: 0.5;
         }
             .translate-action-button.is-loading {
-                animation: subtlePulse 1.5s infinite ease-in-out; 
-                cursor: wait; 
+                animation: subtlePulse 1.5s infinite ease-in-out;
+                cursor: wait;
             }
-            @keyframes subtlePulse { 
-                0%, 100% { opacity: 1; } 
-                50% { opacity: 0.7; } 
+            @keyframes subtlePulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
             }
             .translate-action-button .fa-circle-notch.fa-spin { }
 
@@ -272,7 +273,7 @@
             }
 
 
-            .error-banner { 
+            .error-banner {
                 background-color: #fef7f7;
                 border: 1px solid #f28b82;
                 border-left-width: 4px;
@@ -283,120 +284,117 @@
             .error-banner .icon { color: #d93025; }
             .error-banner .font-bold { color: #b0261c; font-weight: 500; }
             .error-banner p { color: #5c3b3a; }
-            
+
             #copyButton {
-                transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, opacity 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.15s ease-in-out; 
-                font-size: 0.875rem; 
-                padding: 0.25rem 0.625rem; 
-                border: none; 
-                outline: none !important; 
-                background-color: #475569; 
-                color: #ffffff; 
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
+                transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, opacity 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.15s ease-in-out;
+                font-size: 0.875rem;
+                padding: 0.25rem 0.625rem;
+                border: none;
+                outline: none !important;
+                background-color: #475569;
+                color: #ffffff;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             }
-            #copyButton:hover:not(:disabled) { 
-                background-color: #334155; 
-                color: #ffffff; 
-                transform: translateY(-1px); 
-                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); 
+            #copyButton:hover:not(:disabled) {
+                background-color: #334155;
+                color: #ffffff;
+                transform: translateY(-1px);
+                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             }
-            #copyButton:active:not(:disabled) { 
-                 transform: translateY(0px); 
+            #copyButton:active:not(:disabled) {
+                 transform: translateY(0px);
             }
-            #copyButton:focus-visible { 
-                 outline: 2px solid transparent; 
+            #copyButton:focus-visible {
+                 outline: 2px solid transparent;
                  outline-offset: 2px;
-                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #94a3b8; 
+                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #94a3b8;
             }
-            #copyButton:hover:not(:disabled) { 
-                box-shadow: 0 0 15px rgba(71, 85, 105, 0.3), 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.06); 
+            #copyButton:hover:not(:disabled) {
+                box-shadow: 0 0 15px rgba(71, 85, 105, 0.3), 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.06);
             }
-            #copyButton:disabled { 
-                opacity: 0.5; 
-                cursor: not-allowed; 
+            #copyButton:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
             }
             #copyButton.is-copied {
-                background-color: #0ea5e9; 
-                border-color: transparent; 
-                color: #ffffff; 
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
+                background-color: #0ea5e9;
+                border-color: transparent;
+                color: #ffffff;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             }
              #copyButton.is-copied:hover:not(:disabled) {
-                background-color: #0284c7; 
-                color: #ffffff; 
-                transform: translateY(-1px); 
-                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); 
+                background-color: #0284c7;
+                color: #ffffff;
+                transform: translateY(-1px);
+                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             }
-            #copyButton.is-copied:active:not(:disabled) { 
-                 transform: translateY(0px); 
+            #copyButton.is-copied:active:not(:disabled) {
+                 transform: translateY(0px);
             }
-            #copyButton.is-copied:focus-visible { 
-                 outline: 2px solid transparent; 
+            #copyButton.is-copied:focus-visible {
+                 outline: 2px solid transparent;
                  outline-offset: 2px;
-                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #38bdf8; 
+                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #38bdf8;
             }
-            #copyButtonIconContainer i { 
-                font-size: 0.875rem; 
-                line-height: 1; 
-                vertical-align: middle; 
-                transition: color 0.15s ease-in-out; 
+            #copyButtonIconContainer i {
+                font-size: 0.875rem;
+                line-height: 1;
+                vertical-align: middle;
+                transition: color 0.15s ease-in-out;
             }
             #copyButton:hover:not(:disabled) #copyButtonIconContainer i,
             #copyButton.is-copied #copyButtonIconContainer i,
             #copyButton.is-copied:hover:not(:disabled) #copyButtonIconContainer i {
-                color: #ffffff; 
+                color: #ffffff;
             }
 
-            .clear-input-button { 
+            .clear-input-button {
                 transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-                font-size: 0.875rem; 
-                padding: 0.25rem 0.5rem; 
+                font-size: 0.875rem;
+                padding: 0.25rem 0.5rem;
             }
-            .clear-input-button:hover:not(:disabled) { 
-                background-color: var(--app-slate-200); 
-                color: var(--app-blue-600); 
+            .clear-input-button:hover:not(:disabled) {
+                background-color: var(--app-slate-200);
+                color: var(--app-blue-600);
             }
-            .clear-input-button:focus-visible { 
+            .clear-input-button:focus-visible {
                 outline: 1px solid var(--app-purple-focus-ring);
                 outline-offset: 1px;
             }
-            .clear-input-button:disabled { 
-                opacity: 0.5; 
-                cursor: not-allowed; 
+            .clear-input-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
             }
-            
+
             .app-footer p { font-size: 0.875rem; color: var(--color-text-muted, #6B7280); }
 
             .page-main-title {
-                font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; 
-                font-size: 2.25rem; 
-                font-weight: 800;   
-                color: #1e40af; 
+                font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+                font-size: 2.25rem;
+                font-weight: 800;
+                color: #1e40af;
                 line-height: 1.2;
                 text-align: center;
-                margin-bottom: 2rem; 
-                letter-spacing: -0.025em; 
+                margin-bottom: 2rem;
+                letter-spacing: -0.025em;
             }
             @media (min-width: 640px) {
                  .page-main-title { font-size: 2.5rem; }
                  .page-main-title .logo-icon { font-size: 2.5rem; }
             }
             .page-main-title .logo-icon {
-                color: #facc15; 
-                margin-right: 0.75rem; 
-                font-size: 2.25rem; 
+                color: #facc15;
+                margin-right: 0.75rem;
+                font-size: 2.25rem;
                 vertical-align: middle;
-                display: inline-block; 
-                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease; 
+                display: inline-block;
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
             }
             .page-main-title:hover .logo-icon {
-                transform: rotate(-20deg) scale(1.15); 
-                color: #fde047; 
+                transform: rotate(-20deg) scale(1.15);
+                color: #fde047;
             }
-            .text-indigo-500-spark { color: #2563eb; 
-
-    
-
+            .text-indigo-500-spark { color: #2563eb; }
     </style>
 </head>
 <body class="flex flex-col items-center min-h-screen pt-8 pb-8 sm:px-4">
@@ -437,27 +435,27 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button id="translateButton" class="translate-action-button w-auto self-center flex items-center justify-center mt-3 sm:mt-0">
-                        <i id="translateButtonIcon" class="fas fa-language mr-2 opacity-90"></i> 
+                        <i id="translateButtonIcon" class="fas fa-language mr-2 opacity-90"></i>
                         <span id="translateButtonText">Translate</span>
                     </button>
                 </div>
 
                 <section>
                     <div class="flex justify-end items-center mb-2">
-                        <button id="copyButton" title="Copy to clipboard" 
-                                class="flex items-center rounded-md bg-white text-slate-700 font-medium"> 
+                        <button id="copyButton" title="Copy to clipboard"
+                                class="flex items-center rounded-md bg-white text-slate-700 font-medium">
                             <span id="copyButtonIconContainer" class="mr-1.5">
                                 <i class="far fa-copy"></i>
                             </span>
                             <span id="copyButtonTextContainer">Copy</span>
                         </button>
                     </div>
-                    <div 
+                    <div
                         id="outputText"
-                        class="output-box text-io-box w-full text-slate-800 shadow-sm rounded-md overflow-y-auto whitespace-pre-wrap" 
-                        aria-live="polite" 
+                        class="output-box text-io-box w-full text-slate-800 shadow-sm rounded-md overflow-y-auto whitespace-pre-wrap"
+                        aria-live="polite"
                         aria-label="Translated text output area"
                         readonly>
                     </div>
@@ -470,7 +468,7 @@
                             <i class="fas fa-exclamation-circle fa-md icon"></i>
                         </div>
                         <div class="ml-2.5">
-                            <h3 class="text-sm font-medium text-red-700">Translation Error</h3> 
+                            <h3 class="text-sm font-medium text-red-700">Translation Error</h3>
                             <p id="errorMessageText" class="text-sm text-red-600 mt-1">Error messages will appear here.</p>
                         </div>
                     </div>
@@ -488,17 +486,17 @@
         const outputTextElem = document.getElementById('outputText');
         const clearInputButton = document.getElementById('clearInputButton');
         const pasteButton = document.getElementById('pasteButton');
-        const copyButton = document.getElementById('copyButton'); 
+        const copyButton = document.getElementById('copyButton');
         const copyButtonIconContainer = document.getElementById('copyButtonIconContainer');
         const copyButtonTextContainer = document.getElementById('copyButtonTextContainer');
         const translateButton = document.getElementById('translateButton');
         const translateButtonText = document.getElementById('translateButtonText');
-        const translateButtonIcon = document.getElementById('translateButtonIcon'); 
+        const translateButtonIcon = document.getElementById('translateButtonIcon');
         const errorMessageContainer = document.getElementById('errorMessage');
         const errorMessageTextElem = document.getElementById('errorMessageText');
 
-        const initialCopyIconHTML = copyButtonIconContainer.innerHTML; 
-        const initialCopyText = copyButtonTextContainer.textContent; 
+        const initialCopyIconHTML = copyButtonIconContainer.innerHTML;
+        const initialCopyText = copyButtonTextContainer.textContent;
         const outputPlaceholderText = "Translated text will appear here";
 
         function hexToRgb(hex) {
@@ -510,7 +508,7 @@
             const b = bigint & 255;
             return `${r}, ${g}, ${b}`;
         }
-        
+
         function adjustTextareaRows() {
             if (window.innerWidth < 640) {
                 inputTextElem.rows = 4;
@@ -520,7 +518,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            adjustTextareaRows(); 
+            adjustTextareaRows();
             try {
                 const appPurpleBaseHex = getComputedStyle(document.documentElement).getPropertyValue('--app-purple-base').trim();
                  if (appPurpleBaseHex) {
@@ -540,23 +538,23 @@
             }
         });
 
-        window.addEventListener('resize', adjustTextareaRows); 
+        window.addEventListener('resize', adjustTextareaRows);
 
 
-        const API_KEY = 'AIzaSyDSF270Y1VJf1fe4G8ZAuw7bOITbAlal74'; 
-        const MODEL_NAME = 'gemini-2.5-flash-preview-05-20'; 
+        const API_KEY = 'AIzaSyDSF270Y1VJf1fe4G8ZAuw7bOITbAlal74';
+        const MODEL_NAME = 'gemini-2.5-flash-preview-05-20';
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
-        
+
         function updateButtonDisabledStates() {
             const isInputEmpty = inputTextElem.value.trim() === '';
             translateButton.disabled = isInputEmpty;
             clearInputButton.disabled = isInputEmpty;
-            
+
             const outputContent = outputTextElem.textContent;
             const isOutputPlaceholder = outputContent === outputPlaceholderText || outputContent === 'Translating...';
 
-            const isOutputEffectivelyEmpty = !outputContent || 
-                                          outputContent.trim() === '' || 
+            const isOutputEffectivelyEmpty = !outputContent ||
+                                          outputContent.trim() === '' ||
                                           isOutputPlaceholder;
             setCopyButtonState(!isOutputEffectivelyEmpty);
         }
@@ -564,61 +562,61 @@
         function setCopyButtonState(enabled) {
             copyButton.disabled = !enabled;
             if (!enabled) {
-                copyButtonIconContainer.innerHTML = initialCopyIconHTML; 
+                copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = initialCopyText;
                 copyButton.classList.remove('is-copied');
-                copyButtonTextContainer.style.color = ''; 
-                copyButtonIconContainer.querySelector('i').style.color = ''; 
+                copyButtonTextContainer.style.color = '';
+                copyButtonIconContainer.querySelector('i').style.color = '';
             }
         }
 
         function showSkeletonLoader() {
             outputTextElem.classList.remove('is-placeholder-text');
             outputTextElem.innerHTML = '';
-            
+
             const skeletonWrapper = document.createElement('div');
             skeletonWrapper.className = 'skeleton-wrapper';
-            
-            const numLines = window.innerWidth < 640 ? 3 : 5; 
+
+            const numLines = window.innerWidth < 640 ? 3 : 5;
             for (let i = 0; i < numLines; i++) {
                 const skeletonLine = document.createElement('div');
                 skeletonLine.className = 'skeleton-line';
                 skeletonWrapper.appendChild(skeletonLine);
             }
-            
+
             outputTextElem.appendChild(skeletonWrapper);
         }
 
-        function hideSkeletonLoader() { 
+        function hideSkeletonLoader() {
             outputTextElem.classList.remove('is-processing');
         }
 
         function setOutputPlaceholder() {
             hideSkeletonLoader();
-            outputTextElem.innerHTML = ''; 
+            outputTextElem.innerHTML = '';
             const placeholderSpan = document.createElement('span');
             placeholderSpan.textContent = outputPlaceholderText;
             outputTextElem.appendChild(placeholderSpan);
-            outputTextElem.classList.add('is-placeholder-text'); 
+            outputTextElem.classList.add('is-placeholder-text');
             updateButtonDisabledStates();
         }
 
         function clearOutputArea() { setOutputPlaceholder(); }
-        function clearError() { 
+        function clearError() {
             errorMessageContainer.classList.add('hidden');
             errorMessageTextElem.textContent = '';
         }
 
         function setOutputText(text, isProcessingOrError = false) {
-            hideSkeletonLoader(); 
-            outputTextElem.innerHTML = ''; 
-            
+            hideSkeletonLoader();
+            outputTextElem.innerHTML = '';
+
             const contentSpan = document.createElement('span');
             contentSpan.textContent = text;
-            
+
             outputTextElem.appendChild(contentSpan);
 
-            outputTextElem.classList.remove('is-placeholder-text'); 
+            outputTextElem.classList.remove('is-placeholder-text');
             if (text === 'Translating...') {
                  outputTextElem.classList.add('is-placeholder-text', 'is-processing');
             } else if (isProcessingOrError || text === outputPlaceholderText) {
@@ -627,36 +625,36 @@
             } else {
                  outputTextElem.classList.remove('is-processing');
             }
-            
+
             const isValidOutput = text && text.trim() !== '' &&
                                   text !== 'Translating...' &&
                                   text !== outputPlaceholderText &&
                                   !text.toLowerCase().includes("translation failed") &&
                                   !text.toLowerCase().includes("translation blocked") &&
-                                  !text.toLowerCase().includes("translation cancelled"); 
+                                  !text.toLowerCase().includes("translation cancelled");
 
-            setCopyButtonState(isValidOutput); 
-            if (isValidOutput) { 
-                copyButtonIconContainer.innerHTML = initialCopyIconHTML; 
+            setCopyButtonState(isValidOutput);
+            if (isValidOutput) {
+                copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = initialCopyText;
                 copyButton.classList.remove('is-copied');
-                copyButtonTextContainer.style.color = ''; 
+                copyButtonTextContainer.style.color = '';
                 copyButtonIconContainer.querySelector('i').style.color = '';
             }
         }
-        
+
         inputTextElem.addEventListener('input', () => {
             updateButtonDisabledStates();
             if (inputTextElem.value.trim() === '') {
-                clearOutputArea(); 
-                clearError(); 
+                clearOutputArea();
+                clearError();
             }
         });
 
         clearInputButton.addEventListener('click', () => {
             inputTextElem.value = '';
-            inputTextElem.focus(); 
-            inputTextElem.dispatchEvent(new Event('input', { bubbles: true })); 
+            inputTextElem.focus();
+            inputTextElem.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
         pasteButton.addEventListener('click', async () => {
@@ -672,8 +670,8 @@
 
         inputTextElem.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault(); 
-                if (!translateButton.disabled) { 
+                event.preventDefault();
+                if (!translateButton.disabled) {
                     translateButton.click();
                 }
             }
@@ -682,29 +680,29 @@
         document.addEventListener('keydown', (event) => {
             if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'a') {
                 if (document.activeElement === inputTextElem || document.activeElement === outputTextElem ) {
-                } else if (inputTextElem && inputTextElem.value.length > 0) { 
-                     event.preventDefault(); 
+                } else if (inputTextElem && inputTextElem.value.length > 0) {
+                     event.preventDefault();
                     inputTextElem.focus();
                     inputTextElem.select();
                 }
             }
         });
-        
-        let currentTranslationAbortController = null; 
+
+        let currentTranslationAbortController = null;
         function setLoadingState(isLoading) {
             if (isLoading) {
-                translateButton.disabled = true; 
-                translateButton.classList.add('is-loading'); 
-                translateButtonText.textContent = "Translating..."; 
+                translateButton.disabled = true;
+                translateButton.classList.add('is-loading');
+                translateButtonText.textContent = "Translating...";
                 if(translateButtonIcon) {
-                    translateButtonIcon.className = 'fas fa-circle-notch fa-spin mr-2 opacity-90'; 
+                    translateButtonIcon.className = 'fas fa-circle-notch fa-spin mr-2 opacity-90';
                 }
             } else {
                 translateButton.classList.remove('is-loading');
-                updateButtonDisabledStates(); 
+                updateButtonDisabledStates();
                 translateButtonText.textContent = "Translate";
                 if(translateButtonIcon) {
-                    translateButtonIcon.className = 'fas fa-language mr-2 opacity-90'; 
+                    translateButtonIcon.className = 'fas fa-language mr-2 opacity-90';
                 }
             }
         }
@@ -712,19 +710,19 @@
         async function handleTranslate() {
             const textToTranslate = inputTextElem.value.trim();
             const selectedLanguageRadio = document.querySelector('input[name="targetLanguage"]:checked');
-            
+
             if (!selectedLanguageRadio) {
-                showError('Please select a target language.'); 
+                showError('Please select a target language.');
                 return;
             }
             const targetLanguage = selectedLanguageRadio.value;
 
-            if (!textToTranslate) { 
+            if (!textToTranslate) {
                 showError('Please enter some text to translate.');
                 inputTextElem.focus();
                 return;
             }
-            
+
             if (currentTranslationAbortController) {
                 currentTranslationAbortController.abort();
             }
@@ -732,9 +730,9 @@
             const signal = currentTranslationAbortController.signal;
 
             setLoadingState(true);
-            clearError(); 
-            showSkeletonLoader(); 
-            
+            clearError();
+            showSkeletonLoader();
+
             const prompt = `You are an expert multilingual translator. Your primary goal is to provide translations that are highly accurate (aiming for 99% accuracy), natural-sounding, and meticulously preserve the original text's meaning, tone, and nuance. Avoid literal translations if they result in awkward or unnatural phrasing in the target language. Prioritize fluency and contextually appropriate language.
 IMPORTANT: Only return the translated text itself. Do not include any prefixes like "Translated Text:", "Translation:", the original text, or any other extraneous explanations or conversational filler. Just the pure translation.
 If the input text is already in the target language, return the original text.
@@ -744,7 +742,7 @@ Translate the following text into ${targetLanguage}:
 ${textToTranslate}`;
 
             try {
-                const response = await fetch(API_URL, { 
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -759,58 +757,58 @@ ${textToTranslate}`;
                 });
 
                 const responseData = await response.json();
-                 if (signal.aborted) { 
-                    setOutputText('Translation cancelled.', true); 
+                 if (signal.aborted) {
+                    setOutputText('Translation cancelled.', true);
                     return;
                 }
 
                 if (!response.ok) {
                     let errorMsg = `API Error: ${response.status} ${response.statusText}`;
-                    let message = errorMsg; 
+                    let message = errorMsg;
                     if (responseData && responseData.error && responseData.error.message) {
                         errorMsg = `API Error (${response.status}): ${responseData.error.message}`;
-                        message = responseData.error.message; 
+                        message = responseData.error.message;
                     }
-                   
+
                     if (response.status === 400 && errorMsg.toLowerCase().includes("api key") && (errorMsg.toLowerCase().includes("not valid") || errorMsg.toLowerCase().includes("invalid"))) {
                          errorMsg = `API Key Error: The provided API key is not valid or has restrictions.`;
                     } else if ((response.status === 404 || response.status === 500 || response.status === 400) && errorMsg.toLowerCase().includes("model")) {
                         errorMsg = `Model Error: The model '${MODEL_NAME}' could not be found or is not accessible.`;
-                    } else if (message.includes("User location is not supported")) { 
+                    } else if (message.includes("User location is not supported")) {
                          errorMsg = "Location Error: API access from your current location is not supported.";
-                    } else if (response.status === 400 && (message.toLowerCase().includes("resource has been exhausted") || message.toLowerCase().includes("quota"))) { 
+                    } else if (response.status === 400 && (message.toLowerCase().includes("resource has been exhausted") || message.toLowerCase().includes("quota"))) {
                          errorMsg = "Quota Error: You have exceeded your API quota.";
-                    } else if (response.status === 429) { 
+                    } else if (response.status === 429) {
                          errorMsg = "Rate Limit Exceeded: Too many requests. Please wait and try again.";
                     }
                     throw new Error(errorMsg);
                 }
-                
+
                 if (responseData.candidates && responseData.candidates.length > 0 &&
                     responseData.candidates[0].content && responseData.candidates[0].content.parts &&
                     responseData.candidates[0].content.parts.length > 0 &&
                     typeof responseData.candidates[0].content.parts[0].text === 'string') {
-                    
+
                     const translatedText = responseData.candidates[0].content.parts[0].text.trim();
                     setOutputText(translatedText);
 
                 } else if (responseData.promptFeedback && responseData.promptFeedback.blockReason) {
-                    const reasonObj = responseData.promptFeedback.blockReason; 
+                    const reasonObj = responseData.promptFeedback.blockReason;
                     const reason = (typeof reasonObj === 'object' && reasonObj.reason) ? reasonObj.reason : (reasonObj || 'Unknown');
                     let blockDetails = '';
                     if (responseData.promptFeedback.safetyRatings && responseData.promptFeedback.safetyRatings.length > 0) {
                         blockDetails = ` Safety issues detected: ${responseData.promptFeedback.safetyRatings.map(r => `${r.category.replace('HARM_CATEGORY_', '')} (${r.probability})`).join(', ')}.`;
                     }
                     showError(`Translation blocked by API. Reason: ${reason}.${blockDetails}`);
-                    setOutputText('Translation blocked.', true); 
+                    setOutputText('Translation blocked.', true);
                 } else {
                     console.error('Unexpected API response structure:', responseData);
                     showError('Failed to extract translation. API response format unexpected.');
-                    setOutputText('Translation failed.', true); 
+                    setOutputText('Translation failed.', true);
                 }
 
             } catch (error) {
-                 if (error.name === 'AbortError') { 
+                 if (error.name === 'AbortError') {
                     console.log('Fetch aborted');
                     setOutputText('Translation cancelled.', true);
                 } else {
@@ -820,49 +818,49 @@ ${textToTranslate}`;
                          detailedErrorMessage = 'Network Error: Could not connect to the translation service.';
                     }
                     showError(detailedErrorMessage);
-                    setOutputText('Translation failed.', true); 
+                    setOutputText('Translation failed.', true);
                 }
             } finally {
                 setLoadingState(false);
-                currentTranslationAbortController = null; 
+                currentTranslationAbortController = null;
             }
         }
 
         translateButton.addEventListener('click', handleTranslate);
 
         copyButton.addEventListener('click', async () => {
-            if (copyButton.disabled) return; 
+            if (copyButton.disabled) return;
 
             const textToCopy = outputTextElem.textContent;
-            if (!textToCopy || 
-                textToCopy === 'Translating...' || 
-                textToCopy === outputPlaceholderText || 
-                textToCopy.toLowerCase().includes("failed") || 
-                textToCopy.toLowerCase().includes("blocked")  || 
+            if (!textToCopy ||
+                textToCopy === 'Translating...' ||
+                textToCopy === outputPlaceholderText ||
+                textToCopy.toLowerCase().includes("failed") ||
+                textToCopy.toLowerCase().includes("blocked")  ||
                 textToCopy.toLowerCase().includes("cancelled")) {
                 return;
             }
 
             try {
                 await navigator.clipboard.writeText(textToCopy);
-                
-                copyButtonIconContainer.innerHTML = initialCopyIconHTML; 
+
+                copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = 'Copied!';
                 copyButton.classList.add('is-copied');
 
                 setTimeout(() => {
-                    copyButtonIconContainer.innerHTML = initialCopyIconHTML; 
+                    copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                     copyButtonTextContainer.textContent = initialCopyText;
                     copyButton.classList.remove('is-copied');
-                    copyButtonTextContainer.style.color = ''; 
-                    copyButtonIconContainer.querySelector('i').style.color = ''; 
-                    updateButtonDisabledStates(); 
+                    copyButtonTextContainer.style.color = '';
+                    copyButtonIconContainer.querySelector('i').style.color = '';
+                    updateButtonDisabledStates();
                 }, 2000);
             } catch (err) {
                 console.error('Failed to copy text: ', err);
-                copyButtonIconContainer.innerHTML = initialCopyIconHTML; 
+                copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = 'Error';
-                copyButtonTextContainer.style.color = 'var(--text-red-500)'; 
+                copyButtonTextContainer.style.color = 'var(--text-red-500)';
                 copyButton.classList.remove('is-copied');
 
                 setTimeout(() => {
@@ -875,12 +873,12 @@ ${textToTranslate}`;
             }
         });
 
-        function showError(message) { 
+        function showError(message) {
             errorMessageTextElem.textContent = message;
             errorMessageContainer.classList.remove('hidden');
         }
 
-        setOutputPlaceholder(); 
+        setOutputPlaceholder();
         updateButtonDisabledStates();
 
     </script>
