@@ -50,7 +50,10 @@
             --app-sky-500: #0ea5e9;
 
 
-            --app-blue-500-shadow: rgba(59, 130, 246, 0.2);
+            --app-blue-500-shadow: rgba(59, 130, 246, 0.2); /* Original shadow color for reference */
+            --app-blue-500-rgb: 59, 130, 246; /* RGB for --app-blue-500 */
+
+
             --app-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --app-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 
@@ -123,6 +126,7 @@
             min-height: 140px;
             padding: 1rem;
             color: #1f2937;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
         }
         @media (min-width: 640px) {
             .text-io-box {
@@ -139,7 +143,8 @@
         }
         .input-textarea:focus {
             border-color: var(--app-blue-500);
-            box-shadow: 0 0 0 1px var(--app-blue-500-shadow);
+            /* MODIFIED: Updated box-shadow for a more "modern" outline/glow */
+            box-shadow: 0 0 0 3px rgba(var(--app-blue-500-rgb), 0.25);
             outline: none;
         }
         .input-textarea::placeholder {
@@ -224,12 +229,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.4rem 0.8rem; /* MODIFIED from 0.5rem 1rem */
+            padding: 0.4rem 0.8rem;
             border: 1px solid var(--app-border-gray);
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.8rem; /* MODIFIED from 0.875rem */
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--app-slate-600);
             background-color: var(--app-slate-100);
@@ -238,8 +243,8 @@
         }
          @media (min-width: 640px) {
             .lang-option label {
-                padding: 0.4rem 0.8rem; /* MODIFIED */
-                font-size: 0.8rem; /* MODIFIED */
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
         }
         .lang-option label:hover {
@@ -374,11 +379,11 @@
 
             .clear-input-button {
                 transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-                font-size: 0.875rem; /* MODIFIED from 0.825rem */
-                padding: 0.3rem 0.7rem; /* MODIFIED from 0.2rem 0.5rem */
+                font-size: 0.875rem;
+                padding: 0.3rem 0.7rem;
             }
             .clear-input-button i {
-                font-size: 0.8rem; /* MODIFIED from 0.75rem */
+                font-size: 0.8rem;
                 vertical-align: middle;
             }
             .clear-input-button:hover:not(:disabled) {
