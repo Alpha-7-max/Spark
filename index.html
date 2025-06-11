@@ -15,7 +15,7 @@
             --app-disabled-bg-gray: #e5e7eb;
             --app-disabled-text-gray: #9ca3af;
             --app-border-gray: #d1d5db;
-            --copy-button-border-copied: #a78bfa;
+            /* --copy-button-border-copied: #a78bfa;  No longer used */
             --pure-white: #ffffff;
             --placeholder-text-color: #9ca3af;
             --slate-50: #f8fafc;
@@ -34,10 +34,26 @@
 
             --app-slate-100: #f1f5f9;
             --app-slate-700: #334155;
+            --app-slate-600: #475569;
             --app-slate-200: #e2e8f0;
-            --app-blue-600: #2563eb;
-            --app-blue-500-shadow: rgba(59, 130, 246, 0.3);
+            --app-slate-500: #64748b;
+            --app-slate-400: #94a3b8;
+
+
+            --app-blue-300: #93c5fd;
+            --app-blue-400: #60a5fa;
+            --app-blue-500: #3b82f6;
+            --app-blue-800: #1e40af;
+
+            /* Lighter sky blues for copy button copied state */
+            --app-sky-400: #38bdf8;
+            --app-sky-500: #0ea5e9;
+
+
+            --app-blue-500-shadow: rgba(59, 130, 246, 0.2);
             --app-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --app-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
 
             --selection-bg-purple: #d1c4e9;
             --selection-text-purple: #311b92;
@@ -55,39 +71,48 @@
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 0.75rem;  /* MODIFIED: Added side padding for mobile */
-            padding-right: 0.75rem; /* MODIFIED: Added side padding for mobile */
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             width: 100%;
-            box-sizing: border-box; /* Ensures padding is included correctly with width: 100% */
+            box-sizing: border-box;
         }
+        @media (max-width: 639px) {
+            .page-container {
+                margin-top: 7.0rem;
+            }
+        }
+
         @media (min-width: 640px) {
             .page-container {
-                padding: 2rem;
+                margin-top: 0;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
                 max-width: 1280px;
             }
         }
 
+
         ::selection {
-            background-color: var(--app-blue-600);
+            background-color: var(--app-blue-500);
             color: var(--pure-white);
         }
         ::-moz-selection {
-            background-color: var(--app-blue-600);
+            background-color: var(--app-blue-500);
             color: var(--pure-white);
         }
 
         .translator-card {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(1rem);
-            border-radius: 0px; /* MODIFIED: Sharp corners for mobile */
+            border-radius: 0px;
             border: none;
             width: 100%;
         }
         @media (min-width: 640px) {
             .translator-card {
-                border-radius: 8px; /* Less rounded for PC */
+                border-radius: 8px;
                 border: 1px solid var(--app-border-gray);
             }
         }
@@ -113,7 +138,7 @@
             resize: none;
         }
         .input-textarea:focus {
-            border-color: var(--app-blue-600);
+            border-color: var(--app-blue-500);
             box-shadow: 0 0 0 1px var(--app-blue-500-shadow);
             outline: none;
         }
@@ -127,10 +152,10 @@
             font-size: 0.9375rem;
             line-height: 1.65;
             resize: none;
-            color: #374151; /* Medium-Dark Gray */
+            color: #374151;
         }
         .output-box.is-placeholder-text {
-            color: #6b7280; /* Medium Gray */
+            color: #6b7280;
         }
         .output-box.is-processing {
             background-color: var(--app-purple-super-light-bg);
@@ -182,7 +207,7 @@
                         var(--color-skeleton-base),
                         var(--color-skeleton-highlight),
                         var(--color-skeleton-base));
-            animation: shimmer 1.5s infinite;
+            animation: shimmer 1.0s infinite;
             transform: translateX(-100%);
         }
 
@@ -199,32 +224,32 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.375rem 0.75rem; /* Smaller padding for mobile */
+            padding: 0.4rem 0.8rem; /* MODIFIED from 0.5rem 1rem */
             border: 1px solid var(--app-border-gray);
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.8125rem; /* Smaller font for mobile */
+            font-size: 0.8rem; /* MODIFIED from 0.875rem */
             font-weight: 600;
-            color: var(--app-slate-700);
+            color: var(--app-slate-600);
             background-color: var(--app-slate-100);
             line-height: 1.5;
             box-shadow: var(--app-shadow-sm);
         }
          @media (min-width: 640px) {
             .lang-option label {
-                padding: 0.5rem 1rem; /* Original padding for PC */
-                font-size: 0.875rem; /* Original font size for PC */
+                padding: 0.4rem 0.8rem; /* MODIFIED */
+                font-size: 0.8rem; /* MODIFIED */
             }
         }
         .lang-option label:hover {
             background-color: var(--app-slate-200);
         }
         .lang-option input[type="radio"]:checked + label {
-            background-color: var(--app-blue-600);
-            border-color: var(--app-blue-600);
+            background-color: var(--app-blue-400);
+            border-color: var(--app-blue-400);
             color: var(--pure-white);
-            box-shadow: var(--app-blue-500-shadow), var(--app-shadow-sm);
+            box-shadow: 0 1px 3px 0 rgba(96, 165, 250, 0.35), var(--app-shadow-sm);
         }
         .lang-option input[type="radio"]:focus-visible + label {
             outline: 2px solid var(--app-purple-focus-ring);
@@ -232,15 +257,15 @@
         }
 
         .translate-action-button {
-            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            background-image: linear-gradient(to right, var(--app-blue-400), var(--app-blue-500));
+            box-shadow: var(--app-shadow-sm);
             color: #ffffff;
             font-weight: 500;
-            padding: 0.75rem 1.75rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
-            transition: opacity 0.2s ease, transform 0.1s ease;
+            transition: opacity 0.2s ease, transform 0.1s ease, background-image 0.2s ease, box-shadow 0.2s ease;
             border: none;
-            font-size: 0.9375rem;
+            font-size: 0.925rem;
             position: relative;
             overflow: hidden;
         }
@@ -250,26 +275,27 @@
         .translate-action-button:focus-visible {
             outline: 2px solid transparent;
             outline-offset: 2px;
-            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #60a5fa;
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--app-blue-400);
         }
         .translate-action-button:disabled {
-            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
+            background-image: linear-gradient(to right, var(--app-blue-400), var(--app-blue-500));
             color: white;
             cursor: not-allowed;
             opacity: 0.5;
         }
             .translate-action-button.is-loading {
-                animation: subtlePulse 1.5s infinite ease-in-out;
                 cursor: wait;
             }
-            @keyframes subtlePulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.7; }
+            .translate-action-button .fa-spinner.fa-spin-fast {
+                animation: fa-spin 0.7s infinite linear;
             }
-            .translate-action-button .fa-circle-notch.fa-spin { }
-
+            @keyframes fa-spin-fast {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(359deg); }
+            }
             .translate-action-button:hover:not(:disabled) {
-                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.06);
+                box-shadow: var(--app-shadow-md);
+                background-image: linear-gradient(to right, var(--app-blue-500), var(--app-blue-400));
             }
 
 
@@ -288,18 +314,18 @@
             #copyButton {
                 transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, opacity 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.15s ease-in-out;
                 font-size: 0.875rem;
-                padding: 0.25rem 0.625rem;
+                padding: 0.25rem 0.65rem;
                 border: none;
                 outline: none !important;
-                background-color: #475569;
+                background-color: var(--app-slate-500);
                 color: #ffffff;
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                box-shadow: var(--app-shadow-sm);
             }
             #copyButton:hover:not(:disabled) {
-                background-color: #334155;
+                background-color: var(--app-slate-600);
                 color: #ffffff;
                 transform: translateY(-1px);
-                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                box-shadow: var(--app-shadow-md);
             }
             #copyButton:active:not(:disabled) {
                  transform: translateY(0px);
@@ -309,24 +335,22 @@
                  outline-offset: 2px;
                  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #94a3b8;
             }
-            #copyButton:hover:not(:disabled) {
-                box-shadow: 0 0 15px rgba(71, 85, 105, 0.3), 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.06);
-            }
+
             #copyButton:disabled {
                 opacity: 0.5;
                 cursor: not-allowed;
             }
             #copyButton.is-copied {
-                background-color: #0ea5e9;
+                background-color: var(--app-sky-400);
                 border-color: transparent;
                 color: #ffffff;
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                box-shadow: var(--app-shadow-sm);
             }
              #copyButton.is-copied:hover:not(:disabled) {
-                background-color: #0284c7;
+                background-color: var(--app-sky-500);
                 color: #ffffff;
                 transform: translateY(-1px);
-                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                box-shadow: var(--app-shadow-md);
             }
             #copyButton.is-copied:active:not(:disabled) {
                  transform: translateY(0px);
@@ -334,10 +358,10 @@
             #copyButton.is-copied:focus-visible {
                  outline: 2px solid transparent;
                  outline-offset: 2px;
-                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #38bdf8;
+                 box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--app-sky-400);
             }
             #copyButtonIconContainer i {
-                font-size: 0.875rem;
+                font-size: 0.75rem;
                 line-height: 1;
                 vertical-align: middle;
                 transition: color 0.15s ease-in-out;
@@ -350,12 +374,16 @@
 
             .clear-input-button {
                 transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-                font-size: 0.875rem;
-                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem; /* MODIFIED from 0.825rem */
+                padding: 0.3rem 0.7rem; /* MODIFIED from 0.2rem 0.5rem */
+            }
+            .clear-input-button i {
+                font-size: 0.8rem; /* MODIFIED from 0.75rem */
+                vertical-align: middle;
             }
             .clear-input-button:hover:not(:disabled) {
                 background-color: var(--app-slate-200);
-                color: var(--app-blue-600);
+                color: var(--app-blue-500);
             }
             .clear-input-button:focus-visible {
                 outline: 1px solid var(--app-purple-focus-ring);
@@ -372,35 +400,66 @@
                 font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
                 font-size: 2.25rem;
                 font-weight: 800;
-                color: #1e40af;
                 line-height: 1.2;
                 text-align: center;
-                margin-bottom: 2rem;
                 letter-spacing: -0.025em;
-            }
-            @media (min-width: 640px) {
-                 .page-main-title { font-size: 2.5rem; }
-                 .page-main-title .logo-icon { font-size: 2.5rem; }
+                position: fixed;
+                top: 1.5rem;
+                left: 0;
+                right: 0;
+                z-index: 10;
             }
             .page-main-title .logo-icon {
                 color: #facc15;
-                margin-right: 0.75rem;
+                margin-right: 0.6rem;
                 font-size: 2.25rem;
                 vertical-align: middle;
                 display: inline-block;
                 transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
             }
+            .spark-gradient-text {
+                background-image: linear-gradient(to right, var(--app-blue-800), var(--app-blue-400));
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                display: inline-block;
+            }
+
+
+            @media (max-width: 639px) {
+                 .page-main-title {
+                     font-size: 1.75rem;
+                     top: 1rem;
+                 }
+                 .page-main-title .logo-icon {
+                     font-size: 1.75rem;
+                     margin-right: 0.5rem;
+                 }
+            }
+
+            @media (min-width: 640px) {
+                 .page-main-title {
+                     font-size: 2.5rem;
+                     position: static;
+                     margin-bottom: 2rem;
+                 }
+                 .page-main-title .logo-icon {
+                     font-size: 2.5rem;
+                     margin-right: 0.75rem;
+                 }
+            }
+
             .page-main-title:hover .logo-icon {
                 transform: rotate(-20deg) scale(1.15);
                 color: #fde047;
             }
-            .text-indigo-500-spark { color: #2563eb; }
     </style>
 </head>
-<body class="flex flex-col items-center min-h-screen pt-8 pb-8 sm:px-4">
+<body class="flex flex-col items-center min-h-screen pt-6 sm:pt-8 pb-8 sm:px-4">
 
     <h1 class="page-main-title">
-        <i class="fas fa-bolt logo-icon"></i>Spark<span class="font-semibold text-indigo-500-spark">Translate</span>
+        <i class="fas fa-bolt logo-icon"></i><span class="spark-gradient-text">Spark</span>
     </h1>
 
     <div class="page-container w-full">
@@ -422,22 +481,20 @@
                     <textarea id="inputText" rows="4" class="w-full input-textarea text-io-box rounded-md" placeholder="Type or paste text here..."></textarea>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-1">
-                    <div class="flex flex-col w-full sm:w-auto">
-                        <div class="flex space-x-2">
-                            <div class="lang-option">
-                                <input type="radio" name="targetLanguage" id="langEnglish" value="English" checked>
-                                <label for="langEnglish">English</label>
-                            </div>
-                            <div class="lang-option">
-                                <input type="radio" name="targetLanguage" id="langRomanUrdu" value="Roman Urdu">
-                                <label for="langRomanUrdu">Roman Urdu</label>
-                            </div>
+                <div class="flex flex-row items-center justify-between gap-x-3 py-1">
+                    <div class="flex space-x-2">
+                        <div class="lang-option">
+                            <input type="radio" name="targetLanguage" id="langEnglish" value="English" checked>
+                            <label for="langEnglish">English</label>
+                        </div>
+                        <div class="lang-option">
+                            <input type="radio" name="targetLanguage" id="langRomanUrdu" value="Roman Urdu">
+                            <label for="langRomanUrdu">Roman Urdu</label>
                         </div>
                     </div>
 
-                    <button id="translateButton" class="translate-action-button w-auto self-center flex items-center justify-center mt-3 sm:mt-0">
-                        <i id="translateButtonIcon" class="fas fa-language mr-2 opacity-90"></i>
+                    <button id="translateButton" class="translate-action-button flex items-center justify-center">
+                        <i id="translateButtonIcon" class="fas fa-language mr-1 sm:mr-1.5 opacity-90"></i>
                         <span id="translateButtonText">Translate</span>
                     </button>
                 </div>
@@ -445,8 +502,8 @@
                 <section>
                     <div class="flex justify-end items-center mb-2">
                         <button id="copyButton" title="Copy to clipboard"
-                                class="flex items-center rounded-md bg-white text-slate-700 font-medium">
-                            <span id="copyButtonIconContainer" class="mr-1.5">
+                                class="flex items-center rounded-md text-slate-700 font-medium">
+                            <span id="copyButtonIconContainer" class="mr-0.5">
                                 <i class="far fa-copy"></i>
                             </span>
                             <span id="copyButtonTextContainer">Copy</span>
@@ -527,11 +584,6 @@
                          document.documentElement.style.setProperty('--app-purple-base-rgb', appPurpleRgb);
                     }
                 }
-                const langBtnCheckedDimHex = getComputedStyle(document.documentElement).getPropertyValue('--lang-btn-bg-checked-dim').trim();
-                 if (langBtnCheckedDimHex) {
-                    const langBtnRgb = hexToRgb(langBtnCheckedDimHex);
-                    if (langBtnRgb) document.documentElement.style.setProperty('--lang-btn-bg-checked-dim-rgb', langBtnRgb);
-                }
 
             } catch (e) {
                 console.error("Could not set RGB variables:", e);
@@ -565,8 +617,6 @@
                 copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = initialCopyText;
                 copyButton.classList.remove('is-copied');
-                copyButtonTextContainer.style.color = '';
-                copyButtonIconContainer.querySelector('i').style.color = '';
             }
         }
 
@@ -638,8 +688,6 @@
                 copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = initialCopyText;
                 copyButton.classList.remove('is-copied');
-                copyButtonTextContainer.style.color = '';
-                copyButtonIconContainer.querySelector('i').style.color = '';
             }
         }
 
@@ -665,11 +713,12 @@
                 inputTextElem.dispatchEvent(new Event('input', { bubbles: true }));
             } catch (err) {
                 console.error('Failed to read clipboard:', err);
+                 showError('Could not paste text. Browser may not support this or permission denied.');
             }
         });
 
         inputTextElem.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' && !event.shiftKey) {
+            if (event.key === 'Enter' && !event.shiftKey && window.innerWidth >= 640) {
                 event.preventDefault();
                 if (!translateButton.disabled) {
                     translateButton.click();
@@ -695,14 +744,14 @@
                 translateButton.classList.add('is-loading');
                 translateButtonText.textContent = "Translating...";
                 if(translateButtonIcon) {
-                    translateButtonIcon.className = 'fas fa-circle-notch fa-spin mr-2 opacity-90';
+                    translateButtonIcon.className = 'fas fa-spinner fa-spin-fast mr-1 sm:mr-1.5 opacity-90';
                 }
             } else {
                 translateButton.classList.remove('is-loading');
                 updateButtonDisabledStates();
                 translateButtonText.textContent = "Translate";
                 if(translateButtonIcon) {
-                    translateButtonIcon.className = 'fas fa-language mr-2 opacity-90';
+                    translateButtonIcon.className = 'fas fa-language mr-1 sm:mr-1.5 opacity-90';
                 }
             }
         }
@@ -771,15 +820,17 @@ ${textToTranslate}`;
                     }
 
                     if (response.status === 400 && errorMsg.toLowerCase().includes("api key") && (errorMsg.toLowerCase().includes("not valid") || errorMsg.toLowerCase().includes("invalid"))) {
-                         errorMsg = `API Key Error: The provided API key is not valid or has restrictions.`;
+                         errorMsg = `API Key Error: The provided API key is not valid or has restrictions. Please check your API key.`;
                     } else if ((response.status === 404 || response.status === 500 || response.status === 400) && errorMsg.toLowerCase().includes("model")) {
-                        errorMsg = `Model Error: The model '${MODEL_NAME}' could not be found or is not accessible.`;
+                        errorMsg = `Model Error: The model '${MODEL_NAME}' could not be found or is not accessible. Please check the model name.`;
                     } else if (message.includes("User location is not supported")) {
-                         errorMsg = "Location Error: API access from your current location is not supported.";
+                         errorMsg = "Location Error: API access from your current location is not supported by the API provider.";
                     } else if (response.status === 400 && (message.toLowerCase().includes("resource has been exhausted") || message.toLowerCase().includes("quota"))) {
-                         errorMsg = "Quota Error: You have exceeded your API quota.";
+                         errorMsg = "Quota Error: You have exceeded your API usage quota. Please check your API plan.";
                     } else if (response.status === 429) {
-                         errorMsg = "Rate Limit Exceeded: Too many requests. Please wait and try again.";
+                         errorMsg = "Rate Limit Exceeded: Too many requests. Please wait a moment and try again.";
+                    } else {
+                        errorMsg = `Translation service returned an error (${response.status}). Please try again later. Details: ${message}`;
                     }
                     throw new Error(errorMsg);
                 }
@@ -803,7 +854,7 @@ ${textToTranslate}`;
                     setOutputText('Translation blocked.', true);
                 } else {
                     console.error('Unexpected API response structure:', responseData);
-                    showError('Failed to extract translation. API response format unexpected.');
+                    showError('Failed to extract translation. The API response format was unexpected.');
                     setOutputText('Translation failed.', true);
                 }
 
@@ -813,9 +864,9 @@ ${textToTranslate}`;
                     setOutputText('Translation cancelled.', true);
                 } else {
                     console.error('Translation process error:', error);
-                    let detailedErrorMessage = error.message || 'An unexpected error occurred.';
+                    let detailedErrorMessage = error.message || 'An unexpected error occurred during translation.';
                     if (error instanceof TypeError && error.message.toLowerCase().includes("failed to fetch")) {
-                         detailedErrorMessage = 'Network Error: Could not connect to the translation service.';
+                         detailedErrorMessage = 'Network Error: Could not connect to the translation service. Please check your internet connection.';
                     }
                     showError(detailedErrorMessage);
                     setOutputText('Translation failed.', true);
@@ -852,22 +903,18 @@ ${textToTranslate}`;
                     copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                     copyButtonTextContainer.textContent = initialCopyText;
                     copyButton.classList.remove('is-copied');
-                    copyButtonTextContainer.style.color = '';
-                    copyButtonIconContainer.querySelector('i').style.color = '';
                     updateButtonDisabledStates();
                 }, 2000);
             } catch (err) {
                 console.error('Failed to copy text: ', err);
                 copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                 copyButtonTextContainer.textContent = 'Error';
-                copyButtonTextContainer.style.color = 'var(--text-red-500)';
                 copyButton.classList.remove('is-copied');
+                showError('Could not copy text. Browser may not support this or permission denied.');
 
                 setTimeout(() => {
                      copyButtonIconContainer.innerHTML = initialCopyIconHTML;
                      copyButtonTextContainer.textContent = initialCopyText;
-                     copyButtonTextContainer.style.color = '';
-                     copyButtonIconContainer.querySelector('i').style.color = '';
                      updateButtonDisabledStates();
                 }, 2000);
             }
